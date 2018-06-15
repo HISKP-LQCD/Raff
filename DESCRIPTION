@@ -1,0 +1,19 @@
+Package: Raff
+Title: Interface to Read AFF Files in R
+Version: 0.1
+Authors@R: c(person(given = "Marcus", 
+                    family = "Petschlies", 
+                    email = "marcus.petschlies@hiskp.uni-bonn.de", 
+                    role = c("aut")),
+             person(given = "Bartosz",
+                    family = "Kostrzewa",
+                    email = "bartosz_kostrzewa@fastmail.com",
+                    role = c("cre"))
+             )
+Description: Allows Analysis File Format (AFF) files to be read from within R.
+Depends: R (>= 3.2.0)
+SystemRequirements: LHPC AFF library >= 2.1.0 (github.com/usqcd-software/aff)
+License: MIT/Expat
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
