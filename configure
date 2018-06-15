@@ -3639,7 +3639,9 @@ else
                 in your PATH" "$LINENO" 5
 fi
 
+# the R build system reads these from the file "Makevars" in the source directory
 echo "PKG_LIBS=${LDFLAGS}" > src/Makevars
+echo "PKG_LDFLAGS=${LDFLAGS}" >> src/Makevars
 echo "PKG_CFLAGS=${CFLAGS}" >> src/Makevars
 
 cat >confcache <<\_ACEOF
