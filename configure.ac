@@ -6,10 +6,19 @@ AC_HEADER_STDC
 dnl large file support is required to open files larger than 2GB
 AC_SYS_LARGEFILE
 
-dnl we use openmp to parallelise over keys
+dnl aff stores everything big-endian and automatically returns the right bit-ordering
+dnl In case we find platform dependencies down the line, we check for host system
+dnl endianness here and define a preprocessor constant below as a marker.
+AC_C_BIGENDIAN
+
+dnl $WORDS_BIGENDIAN will have zero length when on a little-endian machine
+if test -z "$WORD_BIGENDIAN"; then
+  CFLAGS+=" -DRAFF_LITTLE_ENDIAN"
+fi
+
+dnl we use openmp to parallelise over keys, so we need to find the correct CFLAGS 
 AC_OPENMP()
 CFLAGS+=" $OPENMP_CFLAGS"
-AC_MSG_NOTICE([$CFLAGS])
 
 AC_CHECK_PROGS(LHPC_AFF_CONFIG, lhpc-aff-config)
 
@@ -23,7 +32,7 @@ if test -n "$LHPC_AFF_CONFIG"; then
   dnl BaKo: add the required CFLAGS and define the availability of AFF
   dnl BaKo: the latter is not strictly necessary, but I've kept the #ifdefs
   dnl BaKo: that were in the code by marcuspe
-  CFLAGS+=" $( ${LHPC_AFF_CONFIG} --cflags ) -DHAVE_LHPC_AFF"
+  CFLAGS+=" $( ${LHPC_AFF_CONFIG} --cflags )"
   LDFLAGS+=" $( ${LHPC_AFF_CONFIG} --libs )"
   LDFLAGS+=" $( ${LHPC_AFF_CONFIG} --ldflags )"
 else

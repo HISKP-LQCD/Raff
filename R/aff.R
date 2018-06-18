@@ -1,15 +1,19 @@
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param filename PARAM_DESCRIPTION
-#' @param key_list PARAM_DESCRIPTION
-#' @param key_length PARAM_DESCRIPTION, Default: 0
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
+#' @title: aff_read_key_list
+#' @description
+#'  Read the values corresponding to multiple key names from an aff file.
+#' 
+#' @param filename Full path to the aff file.
+#' @param key_list Vector of key names.
+#' @param key_length Number of complex numbered elements to extract from each
+#'                   key value, Default: 0
+#' @return vector of complex numbers of size = length(key_list) * key_length
 #' @examples 
 #' \dontrun{
 #' if(interactive()){
-#'  aff_read_key_list(filename = "piN_piN_diagrams.1700.tsrc04.keys",
-                      
+#'  aff_read_key_list(filename = "piN_piN_diagrams.1700.tsrc04.aff",
+#'                    key_list = c("/N-N/n2/bwd/gf100/pf1x01pf1y01pf1z-01/gi100/t52x42y02z22",
+#'                                 "/N-N/n2/bwd/gf100/pf1x01pf1y01pf1z-01/gi100/t04x18y26z46"),
+#'                    key_length = 25*4*4)
 #'  }
 #' }
 #' @rdname aff_read_key_list
@@ -47,17 +51,20 @@ aff_read_key_list <- function(filename, key_list, key_length = 0) {
         )
 }
 
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param filename PARAM_DESCRIPTION
-#' @param key PARAM_DESCRIPTION
-#' @param key_length PARAM_DESCRIPTION, Default: 0
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
+#' @title aff_read_key
+#' @description
+#'  Read the value corresponding to a single key from an aff file. 
+#'
+#' @param filename Full path to the aff file.
+#' @param key Name of the key to extract (string)
+#' @param key_length Number of elements to extract from the value referred to by 'key', Default: 0
+#' @return vector of complex numbers of size 'key_length'
 #' @examples 
 #' \dontrun{
 #' if(interactive()){
-#'  #EXAMPLE1
+#'  aff_read_key(filename = "piN_piN_diagrams.1700.tsrc04.aff",
+#'               key = "/N-N/n2/bwd/gf100/pf1x01pf1y01pf1z-01/gi100/t52x42y02z22",
+#'               key_length = 25*4*4)
 #'  }
 #' }
 #' @rdname aff_read_key

@@ -2,30 +2,31 @@
 % Please edit documentation in R/aff.R
 \name{aff_read_key_list}
 \alias{aff_read_key_list}
-\title{FUNCTION_TITLE}
+\title{: aff_read_key_list}
 \usage{
 aff_read_key_list(filename, key_list, key_length = 0)
 }
 \arguments{
-\item{filename}{PARAM_DESCRIPTION}
+\item{filename}{Full path to the aff file.}
 
-\item{key_list}{PARAM_DESCRIPTION}
+\item{key_list}{Vector of key names.}
 
-\item{key_length}{PARAM_DESCRIPTION, Default: 0}
+\item{key_length}{Number of complex numbered elements to extract from each
+key value, Default: 0}
 }
 \value{
-OUTPUT_DESCRIPTION
+vector of complex numbers of size = length(key_list) * key_length
 }
 \description{
-FUNCTION_DESCRIPTION
-}
-\details{
-DETAILS
+Read the values corresponding to multiple key names from an aff file.
 }
 \examples{
 \dontrun{
 if(interactive()){
- aff_read_key_list(filename = "piN_piN_diagrams.1700.tsrc04.keys",
+ aff_read_key_list(filename = "piN_piN_diagrams.1700.tsrc04.aff",
+                   key_list = c("/N-N/n2/bwd/gf100/pf1x01pf1y01pf1z-01/gi100/t52x42y02z22",
+                                "/N-N/n2/bwd/gf100/pf1x01pf1y01pf1z-01/gi100/t04x18y26z46"),
+                   key_length = 25*4*4)
  }
 }
 }

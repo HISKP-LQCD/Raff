@@ -2,30 +2,29 @@
 % Please edit documentation in R/aff.R
 \name{aff_read_key}
 \alias{aff_read_key}
-\title{FUNCTION_TITLE}
+\title{aff_read_key}
 \usage{
 aff_read_key(filename, key, key_length = 0)
 }
 \arguments{
-\item{filename}{PARAM_DESCRIPTION}
+\item{filename}{Full path to the aff file.}
 
-\item{key}{PARAM_DESCRIPTION}
+\item{key}{Name of the key to extract (string)}
 
-\item{key_length}{PARAM_DESCRIPTION, Default: 0}
+\item{key_length}{Number of elements to extract from the value referred to by 'key', Default: 0}
 }
 \value{
-OUTPUT_DESCRIPTION
+vector of complex numbers of size 'key_length'
 }
 \description{
-FUNCTION_DESCRIPTION
-}
-\details{
-DETAILS
+Read the value corresponding to a single key from an aff file.
 }
 \examples{
 \dontrun{
 if(interactive()){
- #EXAMPLE1
+ aff_read_key(filename = "piN_piN_diagrams.1700.tsrc04.aff",
+              key = "/N-N/n2/bwd/gf100/pf1x01pf1y01pf1z-01/gi100/t52x42y02z22",
+              key_length = 25*4*4)
  }
 }
 }
