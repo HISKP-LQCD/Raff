@@ -10,6 +10,19 @@
 
 #include "aff_read.h"
 
+double swap_endian(double u){
+  union {
+    double u;
+    unsigned char u8[sizeof(double)];
+  } source, dest;
+
+  for(int k = 0; k < sizeof(double); k++){
+    dest.u8[k] = source.u8[sizeof(double) - k - 1];
+  }
+
+  return dest.u;
+}
+
 SEXP aff_read_key_interface ( SEXP filename_, SEXP key_, SEXP key_length_  ) {
 
 /* int aff_read_key ( double _Complex * z, char*filename, char*key, int key_length ) */

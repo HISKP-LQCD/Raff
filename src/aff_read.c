@@ -3,9 +3,7 @@
 #include <complex.h>
 #include <math.h>
 
-#ifdef HAVE_LHPC_AFF
 #include "lhpc-aff.h"
-#endif
 #include "aff_read.h"
 /*****************************************************************************************************************
  * aff_read.c
@@ -24,7 +22,6 @@
  *****************************************************************************************************************/
 
 int aff_read_key ( double _Complex * z, char*filename, char*key, const int key_length ) {
-#ifdef HAVE_LHPC_AFF
   int exitstatus;
   struct AffReader_s *affr = NULL;
   struct AffNode_s *affn = NULL, *affdir = NULL;
@@ -63,14 +60,10 @@ int aff_read_key ( double _Complex * z, char*filename, char*key, const int key_l
   aff_reader_close (affr);
 
   return(0);
-#else
-  return( 100 );
-#endif
 }  // end of aff_read_key
 
 
 int aff_read_key_list ( double _Complex * z, char * filename, char ** key_list, const int key_num, const int key_length ) {
-#ifdef HAVE_LHPC_AFF
   int exitstatus;
   struct AffReader_s *affr = NULL;
   struct AffNode_s *affn = NULL, *affdir = NULL;
@@ -114,7 +107,4 @@ int aff_read_key_list ( double _Complex * z, char * filename, char ** key_list, 
   aff_reader_close (affr);
 
   return(0);
-#else
-  return( 100 );
-#endif
 }  // end of aff_read_key
